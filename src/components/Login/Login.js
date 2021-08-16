@@ -43,8 +43,8 @@ const Login = (props) => {
         isValid: null,
     });
 
-    const { isValid: emailIsValid } = emailState;
-    const { isValid: passwordIsValid } = passwordState;
+    const { isValid: emailIsValid } = emailState; // destructuring properties from object
+    const { isValid: passwordIsValid } = passwordState; // destructuring properties from object
     useEffect(() => {
         const timeoutIndentifier = setTimeout(() => {
             console.log("Check form validity");
@@ -55,7 +55,7 @@ const Login = (props) => {
             console.log("CLEAN UP");
             clearTimeout(timeoutIndentifier);
         };
-    }, [emailIsValid, passwordIsValid]); // if enteredEmail or enteredPassword change, it will check form validity
+    }, [emailIsValid, passwordIsValid]); // pass specific properties instead of the entire object as a dependency
 
     const emailChangeHandler = (event) => {
         dispatchEmail({ type: "EMAIL_CHANGE", value: event.target.value });
